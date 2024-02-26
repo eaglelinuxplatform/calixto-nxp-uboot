@@ -1,0 +1,17 @@
+if TARGET_IMX6ULL_VERSA
+
+config SYS_BOARD
+	default "imx6ull_versa"
+
+config SYS_VENDOR
+	default "calixto"
+
+config SYS_CONFIG_NAME
+	default "imx6ull_versa"
+
+config IMX_CONFIG
+	default "board/calixto/imx6ull_versa/imximage_ddr3_256.cfg"
+
+config SYS_TEXT_BASE
+	default 0x87800000
+endif
