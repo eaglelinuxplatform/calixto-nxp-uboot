@@ -145,7 +145,8 @@ MKIMAGEFLAGS_u-boot.imx = -n $(filter-out $(PLUGIN).bin $(QSPI_HEADER) $< $(PHON
 	-T $(IMAGE_TYPE) -e $(CONFIG_SYS_TEXT_BASE)
 u-boot.imx: MKIMAGEOUTPUT = u-boot.imx.log
 
-QSPI_HEADER_SOURCE = board/freescale/common/qspi_header
+//QSPI_HEADER_SOURCE = board/freescale/common/qspi_header
+QSPI_HEADER_SOURCE = board/calixto/common/qspi_header
 QSPI_HEADER = qspi_header
 QSPI_HEADER_OFF = 1
 QSPI_UBOOT_OFF = 4
