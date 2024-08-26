@@ -880,6 +880,9 @@ dtb-$(CONFIG_MX6ULL) += \
 	imx6ull-versa256-uboot.dtb \
 	imx6ull-versa512-uboot.dtb \
 	imx6ull-versa1024-uboot.dtb \
+	imx6ull-tiny256-uboot.dtb \
+	imx6ull-tiny512-uboot.dtb \
+	imx6ull-tiny1024-uboot.dtb \
 	imx6ull-14x14-evk-emmc.dtb \
 	imx6ull-14x14-evk-gpmi-weim.dtb \
 	imx6ull-9x9-evk.dtb \
