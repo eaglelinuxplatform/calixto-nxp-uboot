@@ -28,6 +28,7 @@
 #include <power/pmic.h>
 #include <power/pfuze3000_pmic.h>
 #include "../common/pfuze.h"
+#include <stdio.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -291,6 +292,45 @@ int board_early_init_f(void)
 	return 0;
 }
 
+int read_mac_address(void)
+{
+       u32 *OCOTP_MAC0 = 0x21bc620, *OCOTP_MAC1 = 0x21bc630, *OCOTP_MAC = 0x21bc640;
+       
+       u32 OCOTP_MAC0_VAL, OCOTP_MAC1_VAL, OCOTP_MAC_VAL; 
+       
+       char mac0_strng[20], mac1_strng[20];
+       
+       OCOTP_MAC0_VAL = *OCOTP_MAC0;
+       OCOTP_MAC1_VAL = *OCOTP_MAC1;
+       OCOTP_MAC_VAL  = *OCOTP_MAC;
+       
+       u8 mac0_addr[6], mac1_addr[6];
+       
+       mac0_addr[0] = (OCOTP_MAC1_VAL >> 24) & 0xff;
+       mac0_addr[1] = (OCOTP_MAC1_VAL >> 16) & 0xff;
+       mac0_addr[2] = (OCOTP_MAC0_VAL >> 24) & 0xff;
+       mac0_addr[3] = (OCOTP_MAC0_VAL >> 16) & 0xff;
+       mac0_addr[4] = (OCOTP_MAC0_VAL >> 8) & 0xff;
+       mac0_addr[5] = OCOTP_MAC0_VAL & 0xff;
+       
+       mac1_addr[0] = (OCOTP_MAC_VAL >> 24) & 0xff;
+       mac1_addr[1] = (OCOTP_MAC_VAL >> 16) & 0xff;
+       mac1_addr[2] = (OCOTP_MAC_VAL >> 8) & 0xff;
+       mac1_addr[3] = OCOTP_MAC_VAL & 0xff;
+       mac1_addr[4] = (OCOTP_MAC1_VAL >> 8 ) & 0xff;
+       mac1_addr[5] = OCOTP_MAC1_VAL & 0xff;
+       
+       sprintf(mac0_strng,"%02x:%02x:%02x:%02x:%02x:%02x",mac0_addr[0],mac0_addr[1],mac0_addr[2],mac0_addr[3],mac0_addr[4],mac0_addr[5]);
+       
+       sprintf(mac1_strng,"%02x:%02x:%02x:%02x:%02x:%02x",mac1_addr[0],mac1_addr[1],mac1_addr[2],mac1_addr[3],mac1_addr[4],mac1_addr[5]);
+       
+       env_set("ethaddr",mac0_strng);
+       
+       env_set("eth1addr",mac1_strng);
+       
+       return 0;
+}
+         	    
 int board_init(void)
 {
 	/* Address of boot parameters */
@@ -334,6 +374,7 @@ int board_late_init(void)
 
 #ifdef CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG
  	env_set("board_name", "IMX6ULL-CALIXTO-TINY");
+        read_mac_address();
  
 #endif
 	setup_lcd();
