@@ -71,6 +71,7 @@
 	"bootpart=0:1\0" \
 	"bootdir=/boot\0" \
 	"bootfile=zImage\0" \
+	"uboot_version=1.1\0" \
 	"fdtfile=imx6ull-calixto-versa.dtb\0" \
 	"console=ttymxc0,115200n8\0" \
 	"optargs=\0" \

@@ -294,7 +294,7 @@ int board_early_init_f(void)
 
 int read_mac_address(void)
 {
-       u32 *OCOTP_MAC0 = 0x21bc620, *OCOTP_MAC1 = 0x21bc630, *OCOTP_MAC = 0x21bc640;
+       u32 *OCOTP_MAC0 = (uint32_t *)0x21bc620, *OCOTP_MAC1 = (uint32_t *)0x21bc630, *OCOTP_MAC = (uint32_t *)0x21bc640;
        
        u32 OCOTP_MAC0_VAL, OCOTP_MAC1_VAL, OCOTP_MAC_VAL; 
        
@@ -374,9 +374,9 @@ int board_late_init(void)
 
 #ifdef CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG
  	env_set("board_name", "IMX6ULL-CALIXTO-VERSA");
- 	read_mac_address();
  
 #endif
+	read_mac_address();
 	setup_lcd();
 
 #ifdef CONFIG_ENV_IS_IN_MMC
