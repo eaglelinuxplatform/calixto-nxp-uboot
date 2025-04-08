@@ -578,6 +578,17 @@ config TARGET_MX6ULL_14X14_EVK
 	select IMX_MODULE_FUSE
 	select OF_SYSTEM_SETUP
 	imply CMD_DM
+	
+config TARGET_IMX6ULL_TINY
+	bool "Support imx6ull_tiny"
+	depends on MX6ULL
+	select BOARD_LATE_INIT
+	select DM
+	select DM_THERMAL
+	select IOMUX_LPSR
+	select IMX_MODULE_FUSE
+	select OF_SYSTEM_SETUP
+	imply CMD_DM
 
 config TARGET_MX6ULZ_SMM_M2
 	bool "Support imx6ulz_smm_m2"
@@ -790,6 +801,24 @@ config TARGET_O4_IMX6ULL_NANO
 
 endchoice
 
+config CALIXTO_DDR3_256MB
+  	bool "256MB DDR3 Memory"
+  	default  no
+  	help
+  	  Enabling this will indicate that the system has 256MB DDR3 Memory.
+  	  
+config CALIXTO_DDR3_512MB
+  	bool "512MB DDR3 Memory"
+  	default  no
+  	help
+  	  Enabling this will indicate that the system has 512MB DDR3 Memory.
+  
+config CALIXTO_DDR3_1GB
+  	bool "1GB DDR3 Memory"
+  	default  no
+  	help
+  	  Enabling this will indicate that the system has 1GB DDR3 Memory.
+
 config SYS_SOC
 	default "mx6"
 
@@ -814,6 +843,7 @@ source "board/freescale/mx6sxsabresd/Kconfig"
 source "board/freescale/mx6sxsabreauto/Kconfig"
 source "board/freescale/mx6ul_14x14_evk/Kconfig"
 source "board/freescale/mx6ullevk/Kconfig"
+source "board/calixto/imx6ull_tiny/Kconfig"
 source "board/bosch/acc/Kconfig"
 source "board/grinn/liteboard/Kconfig"
 source "board/phytec/pcm058/Kconfig"

@@ -1042,6 +1042,9 @@ dtb-$(CONFIG_MX6ULL) += \
 	imx6ull-phytec-segin-ff-rdk-emmc.dtb \
 	imx6ull-dart-6ul.dtb \
 	imx6ull-somlabs-visionsom.dtb \
+	imx6ull-tiny256-uboot.dtb \
+	imx6ull-tiny512-uboot.dtb \
+	imx6ull-tiny1024-uboot.dtb \
 	imx6ulz-bsh-smm-m2.dtb \
 	imx6ulz-14x14-evk.dtb \
 	imx6ulz-14x14-evk-emmc.dtb \
