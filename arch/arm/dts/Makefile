@@ -1045,6 +1045,9 @@ dtb-$(CONFIG_MX6ULL) += \
 	imx6ull-tiny256-uboot.dtb \
 	imx6ull-tiny512-uboot.dtb \
 	imx6ull-tiny1024-uboot.dtb \
+	imx6ull-versa256-uboot.dtb \
+	imx6ull-versa512-uboot.dtb \
+	imx6ull-versa1024-uboot.dtb \
 	imx6ulz-bsh-smm-m2.dtb \
 	imx6ulz-14x14-evk.dtb \
 	imx6ulz-14x14-evk-emmc.dtb \

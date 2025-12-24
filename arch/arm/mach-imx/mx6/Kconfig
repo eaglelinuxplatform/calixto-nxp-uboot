@@ -590,6 +590,17 @@ config TARGET_IMX6ULL_TINY
 	select OF_SYSTEM_SETUP
 	imply CMD_DM
 
+config TARGET_IMX6ULL_VERSA
+	bool "Support imx6ull_versa"
+	depends on MX6ULL
+	select BOARD_LATE_INIT
+	select DM
+	select DM_THERMAL
+	select IOMUX_LPSR
+	select IMX_MODULE_FUSE
+	select OF_SYSTEM_SETUP
+	imply CMD_DM
+	
 config TARGET_MX6ULZ_SMM_M2
 	bool "Support imx6ulz_smm_m2"
 	depends on MX6ULL
@@ -844,6 +855,7 @@ source "board/freescale/mx6sxsabreauto/Kconfig"
 source "board/freescale/mx6ul_14x14_evk/Kconfig"
 source "board/freescale/mx6ullevk/Kconfig"
 source "board/calixto/imx6ull_tiny/Kconfig"
+source "board/calixto/imx6ull_versa/Kconfig"
 source "board/bosch/acc/Kconfig"
 source "board/grinn/liteboard/Kconfig"
 source "board/phytec/pcm058/Kconfig"

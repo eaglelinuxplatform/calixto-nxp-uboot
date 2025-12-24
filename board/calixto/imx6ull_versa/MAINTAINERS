@@ -1,0 +1,12 @@
+IMX6ULL TINY SOM
+M:	Vipin Vijayan <vipin.v@calixto.co.in>
+S:	Maintained
+F:	board/calixto/imx6ull_tiny/
+F:	include/configs/imx6ull_tiny.h
+F:	configs/imx6ull_tiny_256_sd_uboot_defconfig
+F:	configs/imx6ull_tiny_512_sd_uboot_defconfig
+F:	configs/imx6ull_tiny_1024_sd_uboot_defconfig
+F:	configs/imx6ull_tiny_256_qspi_uboot_defconfig
+F:	configs/imx6ull_tiny_512_qspi_uboot_defconfig
+F:	configs/imx6ull_tiny_1024_qspi_uboot_defconfig
+
