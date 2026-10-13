@@ -1,0 +1,52 @@
+/* SPDX-License-Identifier: GPL-2.0+ */
+/*
+ * Copyright 2019 NXP
+ */
+
+#ifndef __IMX8MP_OPTIMA_H
+#define __IMX8MP_OPTIMA_H
+
+#include <linux/sizes.h>
+#include <linux/stringify.h>
+#include <asm/arch/imx-regs.h>
+
+#if defined(CONFIG_CMD_NET)
+#define CFG_FEC_MXC_PHYADDR          1
+
+#endif
+
+/* Link Definitions */
+
+#define CFG_SYS_INIT_RAM_ADDR	0x40000000
+#define CFG_SYS_INIT_RAM_SIZE	0x80000
+
+#define CFG_SYS_SDRAM_BASE              0x40000000
+#define PHYS_SDRAM                      0x40000000
+
+/*  2GB calixto optima board */
+#ifdef CONFIG_IMX8MP_LPDDR4_2GB
+#define PHYS_SDRAM_SIZE                 0x80000000              /* 2 GB */
+#define PHYS_SDRAM_2                    0x100000000
+#define PHYS_SDRAM_2_SIZE               0x00000000
+#endif
+
+/*  4GB calixto optima board */
+#ifdef CONFIG_IMX8MP_LPDDR4_4GB
+#define PHYS_SDRAM_SIZE          0xC0000000			/* 3 GB */
+#define PHYS_SDRAM_2             0x100000000
+#define PHYS_SDRAM_2_SIZE        0x40000000			/* 1 GB */
+#endif
+
+#define CFG_MXC_UART_BASE		UART2_BASE_ADDR
+
+#define CFG_SYS_NAND_BASE           0x20000000
+
+#ifdef CONFIG_IMX_MATTER_TRUSTY
+#define NS_ARCH_ARM64 1
+#endif
+
+#ifdef CONFIG_ANDROID_SUPPORT
+#include "imx8mp_evk_android.h"
+#endif
+
+#endif

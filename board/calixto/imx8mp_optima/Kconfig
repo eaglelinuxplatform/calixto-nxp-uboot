@@ -1,0 +1,28 @@
+if TARGET_IMX8MP_OPTIMA 
+
+config SYS_BOARD
+	default "imx8mp_optima"
+
+config SYS_VENDOR
+	default "calixto"
+
+config SYS_CONFIG_NAME
+	default "imx8mp_optima"
+
+config IMX8MP_LPDDR4_2GB
+	bool "Using LPDDR4 2GB RAM"
+	
+
+config IMX8MP_LPDDR4_4GB
+	bool "Using LPDDR4 4GB RAM"
+	
+	
+config IMX_CONFIG
+	default "board/calixto/imx8mp_optima/imximage-8mp-lpddr4.cfg"
+
+config IMX8MP_GP5_LOCK_UPDATE
+	bool "Enable burn GP5_LOCK fuse at boot"
+	help
+	  Select to check the GP5_LOCK fuse and burn it to WP+OP
+
+endif

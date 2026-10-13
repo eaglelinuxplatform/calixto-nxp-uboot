@@ -1,0 +1,8 @@
+OVERDRIVE MODE:
+lpddr4_calixto_optima_H2AB16G32D6C_timing.c is the timing file of 2GB iMX8MP board,  Clock cycle feq. for DDR calibration=1800MHz
+lpddr4_calixto_optima_MT53E1G32D2FW_timing.c is the timing file of 4GiB board, Clock cycle feq. for DDR calibration=2000MHz
+lpddr_timing-4GB-OG.c - ORIGINAL TIMING FILE FOR 4GB. TESTED SUCCESFULLY IN BOARDS AND TE CLOCK CYCLW FREQ. IS 2000MHZ.
+NOMINAL MODE:
+lpddr4_timing-2gb-1600MHz.c : Timing file of 2GB board, Clock Cycle Freq.=1600MHz. (3200MTs is the NOMINAL MODE DDR DATA TRANSFER RATE)
+lpddr4_timing-4GB-1600MHz.c : Timing file of 4GB board, Clock Cycle Freq.=1600MHz.
+

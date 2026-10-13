@@ -1,0 +1,28 @@
+if TARGET_IMX93_VERSA
+
+config SYS_BOARD
+	default "imx93_versa"
+
+config SYS_VENDOR
+	default "calixto"
+
+config SYS_CONFIG_NAME
+	default "imx93_versa"
+
+config IMX93_LPDDR4X_1GB
+	bool "Using LPDDR4X 1GB RAM"
+	default n
+	select IMX9_LPDDR4X
+	help
+	  Select the LPDDR4X 1GB timing and 0.6V VDDQ
+
+config IMX93_LPDDR4X_2GB
+        bool "Using LPDDR4X 2GB RAM"
+        default n
+        select IMX9_LPDDR4X
+        help
+          Select the LPDDR4X 2GB timing and 0.6V VDDQ
+
+
+
+endif

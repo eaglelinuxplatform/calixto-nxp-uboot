@@ -1,0 +1,179 @@
+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+/*
+ * Copyright 2021 NXP
+ */
+
+#include "imx8ulp-u-boot.dtsi"
+
+/ {
+	mu@27020000 {
+		compatible = "fsl,imx8ulp-mu";
+		reg = <0 0x27020000 0 0x10000>;
+		status = "okay";
+		bootph-all;
+	};
+
+	aliases {
+		spi0 = &flexspi0;
+		spi2 = &flexspi2;
+		i2c0 = &lpi2c0;
+		i2c7 = &lpi2c7;
+		usbphy0 = &usbphy1;
+		usb0 = &usbotg1;
+		usbphy1 = &usbphy2;
+		usb1 = &usbotg2;
+		usb_gadget0 = &usbg1;
+	};
+
+	usbg1: usbg1 {
+		compatible = "fsl,imx27-usb-gadget";
+		dr_mode = "peripheral";
+		chipidea,usb = <&usbotg1>;
+		status = "okay";
+	};
+
+	dsi_host: dsi-host {
+		compatible = "northwest,mipi-dsi";
+		status = "okay";
+	};
+
+	reg_5v: regulator-5v {
+		compatible = "regulator-fixed";
+		regulator-name = "5V";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		regulator-always-on;
+	};
+};
+
+&soc {
+	bootph-all;
+};
+
+&{/firmware} {
+	bootph-some-ram;
+};
+
+&{/firmware/scmi} {
+	bootph-some-ram;
+};
+
+&{/firmware/scmi/protocol@15} {
+	bootph-some-ram;
+};
+
+&per_bridge3 {
+	bootph-all;
+};
+
+&mu {
+	status = "disabled";
+};
+
+&wdog3 {
+	status = "disabled";
+};
+
+&per_bridge4 {
+	bootph-all;
+	bootph-pre-ram;
+};
+
+&iomuxc1 {
+	bootph-all;
+
+	pinctrl_dsi: dsigrp {
+		fsl,pins = <
+			MX8ULP_PAD_PTF8__PTF8		0x3
+		>;
+	};
+};
+
+&pinctrl_lpuart5 {
+	bootph-all;
+};
+
+&lpuart5 {
+	bootph-all;
+};
+
+&usdhc0 {
+	bootph-pre-ram;
+	mmc-hs400-1_8v;
+	mmc-hs400-enhanced-strobe;
+};
+
+&pinctrl_usdhc0 {
+	bootph-pre-ram;
+};
+
+&crypto {
+	bootph-pre-ram;
+};
+
+&sec_jr0 {
+	bootph-pre-ram;
+	status = "disabled";
+};
+
+&sec_jr1 {
+	bootph-pre-ram;
+};
+
+&sec_jr2 {
+	bootph-pre-ram;
+};
+
+&sec_jr3 {
+	bootph-pre-ram;
+};
+
+&usbotg1 {
+	compatible = "fsl,imx8ulp-usb", "fsl,imx7ulp-usb", "fsl,imx27-usb";
+};
+
+&scmi_buf {
+	reg = <0x0 0x1000>; /* Align page size */
+};
+
+&dsi {
+	data-lanes-num = <4>;
+	status = "okay";
+
+	panel@0 {
+		compatible = "usmp,rm67162";
+		reg = <0>;
+		dsi-lanes = <1>;
+		reset,otherway;
+		vcc-supply = <&reg_5v>;
+		iovcc-supply = <&reg_5v>;
+
+		port {
+			panel_in: endpoint {
+				remote-endpoint = <&mipi_dsi_out>;
+			};
+		};
+	};
+
+	ports {
+		port@1 {
+			reg = <1>;
+
+			mipi_dsi_out: endpoint {
+				remote-endpoint = <&panel_in>;
+			};
+		};
+	};
+};
+
+&dcnano {
+	status = "okay";
+};
+
+&dphy {
+	status = "okay";
+};
+
+&usbotg2 {
+        status = "disabled";
+};
